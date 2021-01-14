@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import { FcAbout } from "react-icons/fc";
+import { IoMdArrowForward } from "react-icons/io";
+import { useHistory } from "react-router-dom";
 
 interface Props {}
 
 const Nav = ({}: Props) => {
   const transition = { duration: 0.15, ease: [0.43, 0.13, 0.23, 0.96] };
+  const history = useHistory();
 
   const variants = {
     initial: { y: "-100%", opacity: 0 },
@@ -23,6 +25,12 @@ const Nav = ({}: Props) => {
       variants={variants}
       className="border-b bg-white px-6 py-2 flex items-center min-w-0 h-14"
     >
+      <IoMdArrowForward
+        className="mx-2"
+        onClick={() => {
+          history.goBack();
+        }}
+      />
       <h1 className="font-semibold text-lg"> مدیریت محیط زیست</h1>
       <span className="flex-1"></span>
       {/* <span className="ms-2">
