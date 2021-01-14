@@ -26,8 +26,8 @@ const ContactUs = ({}: Props) => {
       <section className="text-gray-600 body-font flex-1">
         <div className="container px-5 py-4 mx-auto flex lg:flex-row flex-col">
           <UniMap />
-          <div className="h-40 mt-4  sm:h-28 w-10 block lg:hidden" />
-          <div className="lg:w-1/2   flex flex-col md:ms-auto w-full px-2 lg:py-8 mt-8 ">
+          <div className="w-10 block lg:hidden" />
+          <div className="lg:w-1/2 flex flex-col md:ms-auto w-full px-2 lg:py-8 mt-8 ">
             <h2 className="text-gray-900 text-lg mb-1 font-medium ">
               ارسال نظر
             </h2>

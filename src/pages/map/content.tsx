@@ -37,6 +37,9 @@ const Content = () => {
   const [showLayer1, setShowLayer1] = useState(false);
   const [showLayer2, setShowLayer2] = useState(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [menuPage, setMenuPage] = useState<"mapsPage" | "layerPage">(
+    "layerPage"
+  );
   const [mapType, setMapType] = useState<{ type: "osm" | "bing" }>({
     type: "osm",
   });
@@ -115,7 +118,7 @@ const Content = () => {
         animate={menuOpen ? "open" : "closed"}
         variants={{
           closed: {
-            clipPath: "circle(10% at 85% 87.5%)",
+            clipPath: "circle(9.8% at 88% 87.5%)",
             scale: 1.3,
             transformOrigin: "bottom right",
           },
@@ -133,70 +136,92 @@ const Content = () => {
           exit={{ opacity: 1 }}
           animate={{ opacity: 1 }}
         >
-          <div>
-            <label className="flex justify-between m-4 items-center">
-              <span>سختگیرانه</span>
-              <input
-                type="checkbox"
-                checked={showLayer1}
-                onChange={(event) => setShowLayer1(event.target.checked)}
-              />
-            </label>
-          </div>
-          <div>
-            <label className="flex justify-between m-4 items-center">
-              <span>لنفیلد</span>
-              <input
-                type="checkbox"
-                checked={showLayer2}
-                onChange={(event) => setShowLayer2(event.target.checked)}
-              />
-            </label>
-          </div>
-          <div className="flex flex-row ">
-            <motion.div
-              layout
-              onClick={() => {
-                setMapType({ type: "osm" });
-              }}
-              className={`relative flex-1 p-2 m-1 rounded-2xl text-center`}
-            >
-              osm
-              {mapType.type === "osm" && (
-                <motion.div
-                  className="absolute top-0 left-0 w-full h-full border-2 rounded-2xl"
-                  layoutId="outline"
-                  animate={{
-                    borderColor: "orange",
-                    backgroundColor: "#aa540030",
-                  }}
-                  initial={false}
-                />
-              )}
-            </motion.div>
-            <motion.div
-              layout
-              onClick={() => {
-                setMapType({ type: "bing" });
-              }}
-              className={`flex-1 p-2 m-1 rounded-2xl text-center relative`}
-            >
-              bing
-              {mapType.type === "bing" && (
-                <motion.div
-                  className="absolute top-0 left-0 w-full h-full border-2 rounded-2xl"
-                  layoutId="outline"
-                  animate={{
-                    borderColor: "green",
-                    backgroundColor: "#00f00030",
-                  }}
-                  initial={false}
-                />
-              )}
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ x: 0 }}
+            animate={{ x: menuPage === "mapsPage" ? "0%" : "50%" }}
+            style={{ width: "200%" }}
+            transition={{ type: "tween" }}
+            className="flex flex-row flex-nowrap"
+          >
+            <div className="w-1/2 flex flex-col bg-green-50">
+              <motion.div
+                layout
+                onClick={() => {
+                  setMapType({ type: "osm" });
+                }}
+                className={`relative flex-1 p-2 m-1 rounded-2xl text-center`}
+              >
+                osm
+                {mapType.type === "osm" && (
+                  <motion.div
+                    className="absolute top-0 left-0 w-full h-full border-2 rounded-2xl"
+                    layoutId="outline"
+                    animate={{
+                      borderColor: "orange",
+                    }}
+                    initial={false}
+                  />
+                )}
+              </motion.div>
+              <motion.div
+                layout
+                onClick={() => {
+                  setMapType({ type: "bing" });
+                }}
+                className={`flex-1 p-2 m-1 rounded-2xl text-center relative`}
+              >
+                bing
+                {mapType.type === "bing" && (
+                  <motion.div
+                    className="absolute top-0 left-0 w-full h-full border-2 rounded-2xl"
+                    layoutId="outline"
+                    animate={{
+                      borderColor: "green",
+                    }}
+                    initial={false}
+                  />
+                )}
+              </motion.div>
+            </div>
+            <div className="w-1/2 flex-1 bg-orange-50">
+              <div>
+                <label className="flex justify-between m-4 items-center">
+                  <span>سختگیرانه</span>
+                  <input
+                    type="checkbox"
+                    checked={showLayer1}
+                    onChange={(event) => setShowLayer1(event.target.checked)}
+                  />
+                </label>
+              </div>
+              <div>
+                <label className="flex justify-between m-4 items-center">
+                  <span>لنفیلد</span>
+                  <input
+                    type="checkbox"
+                    checked={showLayer2}
+                    onChange={(event) => setShowLayer2(event.target.checked)}
+                  />
+                </label>
+              </div>
+            </div>
+          </motion.div>
           <div className="flex flex-row text-center border-b border-orange-400">
-            <div>لایه ها</div>
+            <div
+              onClick={() => setMenuPage("layerPage")}
+              className="bg-orange-50 flex-1 p-2"
+            >
+              لایه ها
+            </div>
+            <div
+              onClick={() => {
+                setMenuPage("mapsPage");
+                console.log(menuPage);
+              }}
+              className="bg-green-50 flex-1 p-2"
+            >
+              نقشه ها
+            </div>
           </div>
         </motion.div>
         {/* )}
@@ -209,7 +234,7 @@ const Content = () => {
             open: { width: "100%", margin: "0.8 rem" },
             closed: { width: 40, margin: "0.5 rem" },
           }}
-          className="p-3 m-1 text-center w-full"
+          className="p-2 text-center w-full"
         >
           <svg width="23" height="23" viewBox="0 0 23 23">
             <Path

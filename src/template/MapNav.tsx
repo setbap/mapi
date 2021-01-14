@@ -24,7 +24,7 @@ const MapNav = ({}: Props) => {
     >
       <h1 className="font-semibold text-lg">نقشه</h1>
       <span className="flex-1"></span>
-      <button className=" border rounded-full me-2 w-10 h-10 text-center leading-none text-gray-200 bg-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"></button>
+      <button className=" border rounded-full -me-3 w-10 h-10 text-center leading-none text-gray-200 bg-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"></button>
     </motion.nav>
   );
 };
