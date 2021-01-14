@@ -19,7 +19,14 @@ import MousePositionControl from "../../controls/MousePositionControlls";
 import Interaction from "../../interaction/Interaction";
 import PointIntraction from "../../interaction/PointIntraction";
 import { motion } from "framer-motion";
-
+import Content from "./content";
+const bing = new olSource.BingMaps({
+  key: "As5lCJ8HFDctXz0rIwzvRo8UEQMxXgJQICk4_1FdR6VWhCV9vxx27Mx4tCLFjxLn",
+  imagerySet: "AerialWithLabelsOnDemand",
+  // use maxZoom 19 to see stretched tiles instead of the BingMaps
+  // "no photos at this zoom level" tiles
+  // maxZoom: 19
+});
 const osm = new olSource.OSM({
   attributions: `© <a href="https://www.openstreetmap.org/copyright">`,
 });
@@ -100,14 +107,17 @@ const geojsonObject2 = {
 const vectorSource = new Vector();
 
 const App = () => {
-  const [center] = useState([-94.9065, 38.9884]);
-  const [zoom] = useState(9);
+  const [center] = useState([52.6685, 36.5372]);
+  const [zoom] = useState(10);
   const [showLayer1, setShowLayer1] = useState(true);
   const [showLayer2, setShowLayer2] = useState(true);
+  const [mapType, setMapType] = useState<{ type: "osm" | "bing" }>({
+    type: "osm",
+  });
   const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
 
   const thumbnailVariants = {
-    initial: { scale: 0.9, opacity: 0 },
+    initial: { scale: 0.9, opacity: 0, transition },
     enter: { scale: 1, opacity: 1, transition },
     exit: {
       scale: 0.85,
@@ -124,66 +134,8 @@ const App = () => {
       exit="exit"
     >
       <Map center={fromLonLat(center)} zoom={zoom}>
-        <Layers>
-          <TileLayer source={osm} zIndex={0} />
-          <VectorLayer
-            source={vectorSource}
-            style={styles.MultiPolygon}
-            zIndex={1}
-          />
-          {showLayer1 && (
-            <VectorLayer
-              source={
-                new Vector({
-                  features: new GeoJSON().readFeatures(geojsonObject, {
-                    featureProjection: get("EPSG:3857"),
-                  }),
-                })
-              }
-              style={styles.MultiPolygon}
-            />
-          )}
-          {showLayer2 && (
-            <VectorLayer
-              source={
-                new Vector({
-                  features: new GeoJSON().readFeatures(geojsonObject2, {
-                    featureProjection: get("EPSG:3857"),
-                  }),
-                })
-              }
-              style={styles.MultiPolygon}
-            />
-          )}
-        </Layers>
-        <Controls>
-          <FullScreenControl />
-          <DistanceControl />
-          <ZoomControlls />
-          <MousePositionControl />
-        </Controls>
-        <Interaction source={vectorSource}>
-          <PointIntraction />
-        </Interaction>
+        <Content />
       </Map>
-      <div className="absolute">
-        <div>
-          <input
-            type="checkbox"
-            checked={showLayer1}
-            onChange={(event) => setShowLayer1(event.target.checked)}
-          />{" "}
-          Johnson County
-        </div>
-        <div>
-          <input
-            type="checkbox"
-            checked={showLayer2}
-            onChange={(event) => setShowLayer2(event.target.checked)}
-          />{" "}
-          Wyandotte County
-        </div>
-      </div>
     </motion.div>
   );
 };

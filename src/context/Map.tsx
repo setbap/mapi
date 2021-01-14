@@ -5,35 +5,80 @@ import * as ol from "ol";
 
 const Map: FC<{ zoom: number; center: any }> = ({ children, zoom, center }) => {
   const mapRef = useRef<HTMLDivElement>(null);
+  const popRef = useRef<HTMLDivElement>(null);
+  const overLayRef = useRef<any>(null);
   const [map, setMap] = useState<ol.Map | null>(null);
   // on component mount
   useEffect(() => {
+    if (mapRef.current === null || popRef.current === null) {
+      return () => {};
+    }
+    const overlay = new ol.Overlay({
+      element: popRef.current,
+      autoPan: true,
+      autoPanAnimation: {
+        duration: 50,
+      },
+    });
+    overLayRef.current = overlay;
+
     let options = {
       view: new ol.View({ zoom, center }),
       layers: [],
       controls: [],
-      overlays: [],
+      overlays: [overlay],
     };
     let mapObject = new ol.Map(options);
     // @ts-ignore
     mapObject.setTarget(mapRef.current);
     setMap(mapObject);
     return () => mapObject.setTarget(undefined);
-  }, [zoom]);
+  }, [popRef.current, mapRef.current]);
   // zoom change handler
   useEffect(() => {
     if (map === null) return;
     else map.getView().setZoom(zoom);
   }, [zoom]);
-  // center change handler
+
   useEffect(() => {
     if (!map) return;
     map.getView().setCenter(center);
+    if (mapRef.current) {
+      const sizeObserver = new ResizeObserver(() => {
+        map.updateSize();
+      });
+      sizeObserver.observe(mapRef.current);
+      return () => {
+        sizeObserver.disconnect();
+      };
+    }
   }, [center]);
   return (
     <MapContext.Provider value={{ map }}>
-      <div ref={mapRef} className="absolute top-0 bottom-0 left-0 right-0">
+      <div
+        style={{ direction: "ltr" }}
+        ref={mapRef}
+        className="w-full h-full  relative"
+      >
         {children}
+        <div
+          id="popup"
+          style={{ direction: "rtl", minWidth: "280px" }}
+          ref={popRef}
+          className="ol-popup absolute bg-white p-3 shadow-md rounded-xl border-1 border-gray-600 bottom-3 -start-12"
+        >
+          <a
+            href="#"
+            id="popup-closer"
+            className="ol-popup-closer no-underline absolute top-1 end-6"
+            onClick={() => {
+              overLayRef.current.setPosition(undefined);
+              popRef.current?.blur();
+              return false;
+            }}
+          ></a>
+          <div id="popup-content"></div>
+        </div>
       </div>
     </MapContext.Provider>
   );

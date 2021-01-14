@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Footer from "../../template/Footer";
+import UniMap from "./uniMap";
 interface Props {}
 
 const ContactUs = ({}: Props) => {
@@ -24,49 +25,7 @@ const ContactUs = ({}: Props) => {
     >
       <section className="text-gray-600 body-font flex-1">
         <div className="container px-5 py-4 mx-auto flex lg:flex-row flex-col">
-          <div className="lg:w-1/2 flex-col   rounded-lg  sm:mx-3  flex items-end justify-start relative">
-            <iframe
-              width="100%"
-              height="400ox"
-              className="inset-0"
-              frameBorder="0"
-              title="map"
-              marginHeight={0}
-              marginWidth={0}
-              scrolling="no"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d316.0926864293749!2d52.68007323533504!3d36.5619072599919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDMzJzQyLjciTiA1MsKwNDAnNDkuNyJF!5e0!3m2!1sen!2snl!4v1609815967732!5m2!1sen!2snl"
-              style={{ filter: " contrast(1.1) opacity(0.7)" }}
-            ></iframe>
-            <div className="   bg-white relative flex flex-wrap -mt-8 py-6 mx-4 rounded shadow-md">
-              <div className="lg:w-1/2 px-6">
-                <h2 className=" font-semibold text-gray-900 tracking-widest text-xs">
-                  آدرس:
-                </h2>
-                <p className="mt-1">
-                  مازندران- بابل- خیابان شریعتی- دانشگاه صنعتی نوشیروانی بابل-
-                  ساختمان عمران- طبقه اول- دفتر انجمن GIS ایران (شعبه مازندران)
-                </p>
-              </div>
-              <div className="flex space-y-4 lg:flex-col sm:flex-row flex-col lg:w-1/2 w-full justify-start items-start px-6 mt-4 lg:mt-0">
-                <div className="w-full ">
-                  <h2 className=" font-semibold text-gray-900 tracking-widest text-xs">
-                    ایمیل:
-                  </h2>
-                  <a className="text-yellow-500 leading-relaxed pt-1">
-                    shomalGIS@gmail.com
-                  </a>
-                </div>
-                <div className="w-full ">
-                  <h2 className=" font-semibold w-full text-gray-900 tracking-widest text-xs lg:mt-4">
-                    تلفن:
-                  </h2>
-                  <div className="leading-relaxed w-full pt-1 ">
-                    011-32332071 داخلی 1540
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <UniMap />
           <div className="h-40 mt-4  sm:h-28 w-10 block lg:hidden" />
           <div className="lg:w-1/2   flex flex-col md:ms-auto w-full px-2 lg:py-8 mt-8 ">
             <h2 className="text-gray-900 text-lg mb-1 font-medium ">

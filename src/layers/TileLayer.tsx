@@ -18,6 +18,7 @@ const TileLayer = ({
     });
     map.addLayer(tileLayer);
     tileLayer.setZIndex(zIndex);
+    // console.log(map.getLayers().getArray());
     return () => {
       if (map) {
         map.removeLayer(tileLayer);

@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { FaSearch } from "react-icons/fa";
+import { GiTestTubes } from "react-icons/gi";
+
 import Footer from "../../template/Footer";
 interface Props {}
 
@@ -43,11 +45,11 @@ const Blog = ({}: Props) => {
             </h3>
           </div>
           <div className="flex text-center flex-wrap justify-center sm:-m-4">
-            <div className="p-4 md:w-1/3">
+            <div className="p-4 w-full md:w-5/12">
               <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
                 <div className="flex items-center justify-center mb-3">
                   <div className=" text-3xl p-3 text-center inline-flex items-center justify-center rounded-full bg-yellow-500 text-white flex-shrink-0">
-                    <FaSearch />
+                    <GiTestTubes />
                   </div>
                 </div>
                 <div className="flex-grow">
@@ -57,7 +59,7 @@ const Blog = ({}: Props) => {
                 </div>
               </div>
             </div>
-            <div className="p-4 w-full  md:w-1/3">
+            <div className="p-4 w-full  md:w-5/12">
               <div className="flex items-center rounded-lg h-full bg-gray-100 p-8 flex-col">
                 <div className="flex items-center justify-center mb-3">
                   <div className=" text-3xl p-3 text-center inline-flex items-center justify-center rounded-full bg-yellow-500 text-white flex-shrink-0">

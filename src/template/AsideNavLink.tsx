@@ -21,7 +21,7 @@ const AsideNavLink = ({ Icon, id, title, to }: Props) => {
         exact
         className="h-full transition-colors  duration-300  flex justify-center lg:justify-start items-center w-full hover:bg-gray-700  p-3"
       >
-        <Icon className="lg:me-2  md:mb-0 text-2xl sm:text-3xl md:text-4xl" />
+        <Icon className="lg:me-4  md:mb-0 text-lg sm:text-xl md:text-2xl" />
         <div className="hidden lg:block">{title}</div>
       </NavLink>
     </li>

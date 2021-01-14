@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@types/ol": "^6.4.2",
+    "@types/resize-observer-browser": "^0.1.5",
     "tailwindcss-rtl": "^0.7.1"
   }
 }
