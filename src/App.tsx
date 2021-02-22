@@ -16,7 +16,7 @@ const App: FC = () => {
   return (
     <AnimateSharedLayout type="switch">
       <Router>
-        <div style={{ minHeight: "-webkit-fill-available", height: "100vh" }}>
+        <div style={{ height: "100vh", minHeight: "-webkit-fill-available" }}>
           <section className="h-screen w-screen bg-gray-200 flex flex-col-reverse sm:flex-row min-h-0 min-w-0 overflow-hidden">
             <aside className="z-50 sm:h-full sm:w-16 transition-all duration-200 lg:w-48 w-full h-12 bg-gray-800 text-gray-200">
               <ul className="text-center flex flex-row sm:flex-col w-full">
