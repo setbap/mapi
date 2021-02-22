@@ -34,8 +34,12 @@ const Path = (props: any) => (
 // const vectorSource = new Vector();
 
 const Content = () => {
-  const [showLayer1, setShowLayer1] = useState(false);
-  const [showLayer2, setShowLayer2] = useState(false);
+  const [showLayer1, setShowLayer1] = useState(true);
+  const [showLayer2, setShowLayer2] = useState(true);
+  const [showLayer3, setShowLayer3] = useState(true);
+  const [showLayer4, setShowLayer4] = useState(true);
+  const [showLayer5, setShowLayer5] = useState(true);
+  const [showLayer6, setShowLayer6] = useState(true);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [menuPage, setMenuPage] = useState<"mapsPage" | "layerPage">(
     "layerPage"
@@ -55,7 +59,7 @@ const Content = () => {
             <TileLayer
               source={
                 new olSource.TileWMS({
-                  url: "http://10.18.8.12:8080/geoserver/Mazandaran/wms",
+                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
                   params: {
                     LAYERS: "Mazandaran:landfills",
                     TILED: true,
@@ -64,27 +68,89 @@ const Content = () => {
                   transition: 0,
                 })
               }
-              zIndex={0}
+              zIndex={12}
             />
           )}
           {showLayer1 && (
             <TileLayer
               source={
                 new olSource.TileWMS({
-                  url: "http://10.18.8.12:8080/geoserver/Mazandaran/wms",
+                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
                   params: {
-                    LAYERS:
-                      "Mazandaran:tabaghebandiMahdoodeMojazMahdoodiatHIGH",
+                    LAYERS: "Mazandaran:Shahr",
                     TILED: true,
                   },
                   serverType: "geoserver",
                   transition: 0,
                 })
               }
-              zIndex={0}
+              zIndex={11}
             />
           )}
-
+          {showLayer3 && (
+            <TileLayer
+              source={
+                new olSource.TileWMS({
+                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
+                  params: {
+                    LAYERS: "Mazandaran:Roosta",
+                    TILED: true,
+                  },
+                  serverType: "geoserver",
+                  transition: 0,
+                })
+              }
+              zIndex={11}
+            />
+          )}
+          {showLayer4 && (
+            <TileLayer
+              source={
+                new olSource.TileWMS({
+                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
+                  params: {
+                    LAYERS: "Mazandaran:jade",
+                    TILED: true,
+                  },
+                  serverType: "geoserver",
+                  transition: 0,
+                })
+              }
+              zIndex={11}
+            />
+          )}
+          {showLayer5 && (
+            <TileLayer
+              source={
+                new olSource.TileWMS({
+                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
+                  params: {
+                    LAYERS: "Mazandaran:shahrestan",
+                    TILED: true,
+                  },
+                  serverType: "geoserver",
+                  transition: 0,
+                })
+              }
+              zIndex={11}
+            />
+          )}
+          {showLayer6 && (
+            <TileLayer
+              source={
+                new olSource.TileWMS({
+                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
+                  params: {
+                    LAYERS: "Mazandaran:Sanaye",
+                    TILED: true,
+                  },
+                  serverType: "geoserver",
+                  transition: 0,
+                })
+              }
+              zIndex={11}
+            />
+          )}
           {/* <VectorLayer
               source={
                 new Vector({
@@ -118,7 +184,7 @@ const Content = () => {
         animate={menuOpen ? "open" : "closed"}
         variants={{
           closed: {
-            clipPath: "circle(9.8% at 88% 87.5%)",
+            clipPath: "circle(6.2% at 89% 93.1%)",
             scale: 1.3,
             transformOrigin: "bottom right",
           },
@@ -141,20 +207,20 @@ const Content = () => {
             animate={{ x: menuPage === "mapsPage" ? "0%" : "50%" }}
             style={{ width: "200%" }}
             transition={{ type: "tween" }}
-            className="flex flex-row flex-nowrap"
+            className="flex flex-row flex-nowrap bg-green-50"
           >
-            <div className="w-1/2 flex flex-col bg-green-50">
+            <div className="w-1/2 flex flex-col h-20 bg-green-50">
               <motion.div
                 layout
                 onClick={() => {
                   setMapType({ type: "osm" });
                 }}
-                className={`relative flex-1 p-2 m-1 rounded-2xl text-center`}
+                className={`relative flex-1 h-10 p-2 m-1 rounded-2xl text-center`}
               >
                 osm
                 {mapType.type === "osm" && (
                   <motion.div
-                    className="absolute top-0 left-0 w-full h-full border-2 rounded-2xl"
+                    className="absolute top-0 h-10 left-0 w-full  border-2 rounded-2xl"
                     layoutId="outline"
                     animate={{
                       borderColor: "orange",
@@ -186,7 +252,7 @@ const Content = () => {
             <div className="w-1/2 flex-1 bg-orange-50">
               <div>
                 <label className="flex justify-between m-4 items-center">
-                  <span>سختگیرانه</span>
+                  <span>شهر</span>
                   <input
                     type="checkbox"
                     checked={showLayer1}
@@ -196,11 +262,54 @@ const Content = () => {
               </div>
               <div>
                 <label className="flex justify-between m-4 items-center">
-                  <span>لنفیلد</span>
+                  <span>لندفیل</span>
                   <input
                     type="checkbox"
                     checked={showLayer2}
                     onChange={(event) => setShowLayer2(event.target.checked)}
+                  />
+                </label>
+              </div>
+
+              <div>
+                <label className="flex justify-between m-4 items-center">
+                  <span>روستا</span>
+                  <input
+                    type="checkbox"
+                    checked={showLayer3}
+                    onChange={(event) => setShowLayer3(event.target.checked)}
+                  />
+                </label>
+              </div>
+
+              <div>
+                <label className="flex justify-between m-4 items-center">
+                  <span>جاده</span>
+                  <input
+                    type="checkbox"
+                    checked={showLayer4}
+                    onChange={(event) => setShowLayer4(event.target.checked)}
+                  />
+                </label>
+              </div>
+
+              <div>
+                <label className="flex justify-between m-4 items-center">
+                  <span>شهرستان</span>
+                  <input
+                    type="checkbox"
+                    checked={showLayer5}
+                    onChange={(event) => setShowLayer5(event.target.checked)}
+                  />
+                </label>
+              </div>
+              <div>
+                <label className="flex justify-between m-4 items-center">
+                  <span>صنابع</span>
+                  <input
+                    type="checkbox"
+                    checked={showLayer6}
+                    onChange={(event) => setShowLayer6(event.target.checked)}
                   />
                 </label>
               </div>
