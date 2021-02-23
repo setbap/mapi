@@ -33,13 +33,7 @@ const Nav = ({}: Props) => {
       />
       <h1 className="font-semibold text-lg"> مدیریت محیط زیست</h1>
       <span className="flex-1"></span>
-      {/* <span className="ms-2">
-        <input
-          type="text"
-          placeholder="Search"
-          className="w-full border-2 px-2 py-1 border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-gray-300 focus:bg-gray-100"
-        />
-      </span> */}
+
       <button className=" border rounded-full  w-10 h-10 text-center leading-none text-gray-200 bg-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"></button>
     </motion.nav>
   );

@@ -11,7 +11,7 @@ interface Props {
 const AsideNavLink = ({ Icon, id, title, to }: Props) => {
   return (
     <li
-      className="sm:border-b  overflow-hidden border-gray-900 flex-1 sm:w-full"
+      className="border-0 sm:border-b  overflow-hidden border-gray-900 flex-1 sm:w-full"
       title={title}
     >
       <NavLink
