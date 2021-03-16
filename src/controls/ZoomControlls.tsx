@@ -5,7 +5,7 @@ const ZoomControl: FC = () => {
   const { map } = useContext(MapContext);
   useEffect(() => {
     if (!map) return () => {};
-    const zoomControl = new Zoom({});
+    const zoomControl = new Zoom({ zoomInLabel: "hello" });
     map.addControl(zoomControl);
     return () => map.removeControl(zoomControl);
   }, [map]);

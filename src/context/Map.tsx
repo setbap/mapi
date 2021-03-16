@@ -8,7 +8,7 @@ const Map: FC<{ zoom: number; center: any }> = ({ children, zoom, center }) => {
   const popRef = useRef<HTMLDivElement>(null);
   const overLayRef = useRef<any>(null);
   const [map, setMap] = useState<ol.Map | null>(null);
-  // on component mount
+
   useEffect(() => {
     if (mapRef.current === null || popRef.current === null) {
       return () => {};
@@ -38,7 +38,7 @@ const Map: FC<{ zoom: number; center: any }> = ({ children, zoom, center }) => {
   useEffect(() => {
     if (map === null) return;
     else map.getView().setZoom(zoom);
-  }, [zoom]);
+  }, [map, zoom]);
 
   useEffect(() => {
     if (!map) return;
@@ -52,7 +52,7 @@ const Map: FC<{ zoom: number; center: any }> = ({ children, zoom, center }) => {
         sizeObserver.disconnect();
       };
     }
-  }, [center]);
+  }, [center, map]);
   return (
     <MapContext.Provider value={{ map }}>
       <div
@@ -67,8 +67,7 @@ const Map: FC<{ zoom: number; center: any }> = ({ children, zoom, center }) => {
           ref={popRef}
           className="ol-popup absolute bg-white p-3 shadow-md rounded-xl border-1 border-gray-600 bottom-3 -start-12"
         >
-          <a
-            href="#"
+          <div
             id="popup-closer"
             className="ol-popup-closer no-underline absolute top-1 end-6"
             onClick={() => {
@@ -76,7 +75,7 @@ const Map: FC<{ zoom: number; center: any }> = ({ children, zoom, center }) => {
               popRef.current?.blur();
               return false;
             }}
-          ></a>
+          ></div>
           <div id="popup-content"></div>
         </div>
       </div>

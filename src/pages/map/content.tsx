@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 // import "./App.css";
 import "ol/ol.css";
 import TileLayer from "../../layers/TileLayer";
-import VectorLayer from "../../layers/VectorLayer";
 import Layers from "../../layers/Layers";
 // import { osm, vector } from "./Source";
 import Controls from "../../controls/Controls";
 import * as olSource from "ol/source";
 // import { Vector } from "ol/source";
-import ZoomControlls from "../../controls/ZoomControlls";
+
+import ZoomControllsCustom from "../../controls/ZoomControlls.custom";
 import DistanceControl from "../../controls/DistanceControl";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Interaction from "../../interaction/Interaction";
 import PointIntraction from "../../interaction/PointIntraction";
 const bing = new olSource.BingMaps({
@@ -166,7 +166,7 @@ const Content = () => {
         <Controls>
           {/* <FullScreenControl /> */}
           <DistanceControl />
-          <ZoomControlls />
+          <ZoomControllsCustom />
           {/* <MousePositionControl /> */}
         </Controls>
         <Interaction>
@@ -192,7 +192,7 @@ const Content = () => {
         }}
         transition={{ type: "tween" }}
         style={{ direction: "rtl" }}
-        className="absolute bottom-4 z-50 overflow-hidden  w-48 bg-white right-4 border-2 border-orange-400 rounded-lg"
+        className="absolute bottom-4 z-10 overflow-hidden  w-48 bg-white right-4 border-2 border-orange-400 rounded-lg"
       >
         {/* <AnimatePresence>
           {menuOpen && ( */}
