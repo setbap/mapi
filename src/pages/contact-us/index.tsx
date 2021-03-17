@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import Footer from "../../template/Footer";
 import UniMap from "./uniMap";
-interface Props {}
+// interface Props {}
 
-const ContactUs = ({}: Props) => {
+const ContactUs = () => {
   const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
 
   const thumbnailVariants = {

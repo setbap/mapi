@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { BiMapAlt } from "react-icons/bi";
+import { AiFillPayCircle } from "react-icons/ai";
+import { BiHome, BiMapAlt } from "react-icons/bi";
 import { BsInfoCircle } from "react-icons/bs";
 import { MdContactMail } from "react-icons/md";
 import { RiArticleLine } from "react-icons/ri";
@@ -39,6 +40,20 @@ const AsideMenu = ({ open, closeFn }: Props) => {
             to="/"
             Icon={BiMapAlt}
             title={"نقشه"}
+          />
+          <AsideNavLink
+            onClick={closeFn}
+            id="home-page-aside"
+            to="/home"
+            Icon={BiHome}
+            title={"خانه"}
+          />
+          <AsideNavLink
+            onClick={closeFn}
+            id="landfill-page-aside"
+            to="/landfill"
+            Icon={AiFillPayCircle}
+            title={"لندفیل"}
           />
           <AsideNavLink
             onClick={closeFn}

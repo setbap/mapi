@@ -3,6 +3,8 @@ import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import Map from "./pages/map";
+import Home from "./pages/home";
+import LandFill from "./pages/landfill";
 import About from "./pages/about";
 import Blog from "./pages/blog";
 import AsideMenu from "./template/AsideMenu";
@@ -41,6 +43,8 @@ const App: FC = () => {
                         <Route exact path="/" component={Map} />
                         <Route exact path="/about" component={About} />
                         <Route exact path="/contact_us" component={ContactUs} />
+                        <Route exact path="/landfill" component={LandFill} />
+                        <Route exact path="/home" component={Home} />
                         <Route
                           exact
                           path={["/blog/:id", "/blog"]}
