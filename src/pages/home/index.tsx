@@ -1,7 +1,9 @@
 // interface Props {}
 
 import { motion } from "framer-motion";
-
+import Footer from "./footer";
+import GetStarted from "./get_started";
+import HomeTwo from "./home";
 const Home = () => {
   const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
 
@@ -17,12 +19,16 @@ const Home = () => {
   return (
     <motion.div
       variants={thumbnailVariants}
-      className="w-full h-full relative flex flex-col overflow-auto"
+      className="w-full bg-fixed  flex-wrap flex flex-row overflow-auto"
       initial="exit"
       animate="enter"
       exit="exit"
     >
-      <div>کارگران مشقول کار اند</div>
+      <div className="w-full">
+        <GetStarted />
+      </div>
+      <HomeTwo />
+      <Footer />
     </motion.div>
   );
 };

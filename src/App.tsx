@@ -30,6 +30,7 @@ const App: FC = () => {
                   <AnimatePresence exitBeforeEnter initial={false}>
                     <Switch location={location} key={location.pathname}>
                       <Route exact path="/" component={MapNav} />
+                      <Route exact path="/home" component={() => <></>} />
                       <Route path="/" component={Nav} />
                     </Switch>
                   </AnimatePresence>

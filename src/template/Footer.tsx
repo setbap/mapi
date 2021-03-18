@@ -1,5 +1,3 @@
-import { AiFillFacebook } from "react-icons/ai";
-import { FaLinkedin } from "react-icons/fa";
 import { FiTwitter, FiInstagram, FiLinkedin, FiFacebook } from "react-icons/fi";
 
 interface Props {}
