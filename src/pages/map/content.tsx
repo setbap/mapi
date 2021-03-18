@@ -59,9 +59,9 @@ const Content = () => {
             <TileLayer
               source={
                 new olSource.TileWMS({
-                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
+                  url: "http://217.219.165.22/geoserver/harim/wms",
                   params: {
-                    LAYERS: "Mazandaran:landfills",
+                    LAYERS: "harim:landfills",
                     TILED: true,
                   },
                   serverType: "geoserver",
@@ -75,9 +75,9 @@ const Content = () => {
             <TileLayer
               source={
                 new olSource.TileWMS({
-                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
+                  url: "http://217.219.165.22/geoserver/harim/wms",
                   params: {
-                    LAYERS: "Mazandaran:Shahr",
+                    LAYERS: "harim:Shahr",
                     TILED: true,
                   },
                   serverType: "geoserver",
@@ -91,9 +91,9 @@ const Content = () => {
             <TileLayer
               source={
                 new olSource.TileWMS({
-                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
+                  url: "http://217.219.165.22/geoserver/harim/wms",
                   params: {
-                    LAYERS: "Mazandaran:Roosta",
+                    LAYERS: "harim:Roosta",
                     TILED: true,
                   },
                   serverType: "geoserver",
@@ -107,9 +107,9 @@ const Content = () => {
             <TileLayer
               source={
                 new olSource.TileWMS({
-                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
+                  url: "http://217.219.165.22/geoserver/harim/wms",
                   params: {
-                    LAYERS: "Mazandaran:jade",
+                    LAYERS: "harim:jade",
                     TILED: true,
                   },
                   serverType: "geoserver",
@@ -123,9 +123,9 @@ const Content = () => {
             <TileLayer
               source={
                 new olSource.TileWMS({
-                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
+                  url: "http://217.219.165.22/geoserver/harim/wms",
                   params: {
-                    LAYERS: "Mazandaran:shahrestan",
+                    LAYERS: "harim:shahrestan",
                     TILED: true,
                   },
                   serverType: "geoserver",
@@ -139,9 +139,9 @@ const Content = () => {
             <TileLayer
               source={
                 new olSource.TileWMS({
-                  url: "http://217.219.165.22/geoserver/Mazandaran/wms",
+                  url: "http://217.219.165.22/geoserver/harim/wms",
                   params: {
-                    LAYERS: "Mazandaran:Sanaye",
+                    LAYERS: "harim:Sanaye",
                     TILED: true,
                   },
                   serverType: "geoserver",

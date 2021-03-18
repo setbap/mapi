@@ -129,7 +129,8 @@ const LandFill = () => {
           </div>
         </div>
 
-        <div className=" bg-green-100 h-48 w-10/12 mx-auto rounded-xl shadow-lg md:h-56 md:bottom-10 md:absolute md:left-16 lg:left-10 lg:w-11/12 xl:left-24 xl:w-10/12">
+        <div className="h-8" />
+        <div className=" bg-green-100 h-48 w-10/12 mx-auto rounded-xl shadow-lg md:h-56  md:mb-4   lg:w-11/12  xl:w-10/12">
           <div className=" h-2/6 ps-10 pt-5 font-bold">🧭 Sari, Iran</div>
           <div className=" h-2/6 ps-10 pt-5 font-bold">📞 011-3550</div>
           <div className=" h-2/6 ps-10 pt-5 font-bold">📊 Enviro.NIT</div>
